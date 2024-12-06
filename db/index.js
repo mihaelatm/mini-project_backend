@@ -10,8 +10,10 @@ function connectToMongoDB() {
       useUnifiedTopology: true,
     })
     .then(() => console.log("MongoDB connected"))
-    .catch((error) => console.log("Connection to MongoDB failed: ", error));
-  process.exit(1);
+    .catch((error) => {
+      console.error("Connection to MongoDB failed: ", error);
+      process.exit(1); // Termină aplicația dacă există o eroare la conectare
+    });
 }
 
 export default connectToMongoDB;
